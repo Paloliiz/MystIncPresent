@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystery Inc. Case Files - Presentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Prompt:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-purple: #4A148C;
+            --neon-green: #76FF03;
+            --mystery-orange: #FF6D00;
+            --dark-bg: #1a1a1a;
+            --text-white: #ffffff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Prompt', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+        }
+
+        /* Slide Container */
+        .slides-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            background: radial-gradient(circle, #2e2e2e 0%, #000000 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+            pointer-events: all;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0px #000;
+            margin: 0.2em 0;
+        }
+
+        h1 { font-size: 5rem; color: var(--neon-green); text-align: center; }
+        h2 { font-size: 3.5rem; color: var(--mystery-orange); }
+        h3 { font-size: 2rem; color: var(--primary-purple); background: #fff; padding: 5px 15px; border-radius: 10px; }
+        p, li { font-size: 1.8rem; line-height: 1.6; }
+
+        /* Layouts */
+        .content-box {
+            width: 80%;
+            text-align: center;
+        }
+
+        .split-layout {
+            display: flex;
+            width: 90%;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .split-item { width: 45%; text-align: center; }
+
+        /* Visual Elements */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--neon-green);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .ioc-badge {
+            background: gold;
+            color: black;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Bangers';
+            font-size: 2rem;
+            box-shadow: 0 0 20px gold;
+            animation: pulse 2s infinite;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 400px;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        .bar {
+            width: 100px;
+            background: var(--mystery-orange);
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: relative;
+            transition: height 1s ease-out;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .bar.green { background: var(--neon-green); color: black; }
+        
+        .bar span {
+            position: absolute;
+            top: -40px;
+            width: 100%;
+            left: 0;
+        }
+
+        .video-wrapper {
+            width: 800px;
+            height: 450px;
+            border: 5px solid var(--primary-purple);
+            background: #000;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Controls */
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        
+        button {
+            background: var(--neon-green);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-family: 'Bangers';
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        button:hover { background: #fff; }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .highlight { color: var(--neon-green); font-weight: bold; }
+        
+    </style>
+</head>
+<body>
+
+<div class="slides-container">
+
+    <div class="slide active" id="slide1">
+        <div class="content-box">
+            <div class="video-wrapper">
+                <video autoplay muted controls>
+                    <source src="teaser.mp4" type="video/mp4">
+                    Browser ไม่รองรับวิดีโอ (โปรดตรวจสอบชื่อไฟล์ teaser.mp4)
+                </video>
+            </div>
+            <h2>"When the classroom becomes a crime scene..."</h2>
+        </div>
+    </div>
+
+    <div class="slide" id="slide2">
+        <div class="content-box">
+            <h3>GOOD PRACTICE: INNOVATION & TECHNOLOGY</h3>
+            <h1>MYSTERY INC. CASE FILES</h1>
+            <h2>The Portable AR Edition with AI Integration</h2>
+            <p style="margin-top: 50px;">
+                โดย <strong>นางสาวศรุตา จันทเกตุ</strong><br>
+                กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ<br>
+                โรงเรียนเขาฉกรรจ์วิทยาคม
+            </p>
+        </div>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h1>THE ORIGIN STORY</h1>
+        <div class="split-layout">
+            <div class="split-item card">
+                <h2>THE PROBLEM</h2>
+                <p>😞 Lack of Motivation</p>
+                <p>😴 Passive Learning</p>
+                <p>📉 Low Critical Thinking</p>
+            </div>
+            <div class="split-item">
+                <span style="font-size: 4rem;">➡️</span>
+            </div>
+            <div class="split-item card">
+                <h2>INSPIRATION</h2>
+                <p>🏆 The Criminal Code</p>
+                <p>(Gold Medal Project)</p>
+                <p>✨ ย่อส่วน • พกพา • ทันสมัย</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide4">
+        <h1>THE CONCEPT: DUAL-TRACK SYSTEM</h1>
+        <div class="split-layout" style="align-items: flex-start;">
+            <div class="split-item card">
+                <h2 style="color:var(--primary-purple)">TRACK 1: ON-SITE</h2>
+                <p>🎒 <strong>A5 Portable Kit</strong></p>
+                <ul style="text-align: left;">
+                    <li>AR Scenario Cards</li>
+                    <li>Velcro Puzzles</li>
+                    <li>Cipher Wheels</li>
+                </ul>
+            </div>
+            <div class="split-item card">
+                <h2 style="color:var(--neon-green)">TRACK 2: ONLINE</h2>
+                <p>💻 <strong>Digital Archive</strong></p>
+                <ul style="text-align: left;">
+                    <li>Notion Database</li>
+                    <li>Audio Library</li>
+                    <li>Online Submission</li>
+                </ul>
+            </div>
+        </div>
+        <h2 style="margin-top:30px;">= HYBRID LEARNING 🌍</h2>
+    </div>
+
+    <div class="slide" id="slide5">
+        <h1>POWERED BY AI & TECHNOLOGY</h1>
+        <div class="split-layout">
+            <div class="split-item">
+                <h2>🤖 GENERATE</h2>
+                <p><strong>Gemini + Canva</strong><br>(Character & Scene Design)</p>
+                <p><strong>Flow AI</strong><br>(Voice & Video Production)</p>
+            </div>
+            <div class="split-item">
+                <h2>📱 EXPERIENCE</h2>
+                <p><strong>Artivive</strong><br>(Augmented Reality)</p>
+                <p><strong>Notion</strong><br>(Digital Database)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide6">
+        <h1>HOW TO SOLVE THE CASE</h1>
+        <div class="video-wrapper">
+             <video autoplay muted controls>
+                <source src="demo.mp4" type="video/mp4">
+                Browser ไม่รองรับวิดีโอ (โปรดตรวจสอบชื่อไฟล์ demo.mp4)
+            </video>
+        </div>
+        <div style="margin-top: 20px; display: flex; gap: 20px; justify-content: center;">
+            <span class="card">1. SCAN</span>
+            <span class="card">2. ANALYZE</span>
+            <span class="card">3. BUILD</span>
+            <span class="card">4. DECODE</span>
+            <span class="card">5. REPORT</span>
+        </div>
+    </div>
+
+    <div class="slide" id="slide7">
+        <h1>QUALITY ASSURANCE</h1>
+        <div class="split-layout">
+            <div class="split-item">
+                <h2>PROCESS: PDCA</h2>
+                <p>Plan ➡️ Do ➡️ Check ➡️ Act</p>
+                <p>ออกแบบตามมาตรฐานหลักสูตร</p>
+            </div>
+            <div class="split-item">
+                <div class="ioc-badge">
+                    IOC<br>0.85
+                </div>
+                <p>ผ่านการตรวจสอบโดยผู้เชี่ยวชาญ 3 ท่าน</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide8">
+        <h1>IMPACT & RESULTS</h1>
+        <div class="bar-chart">
+            <div class="bar" style="height: 200px;">
+                <span>8.78</span>
+                PRE-TEST
+            </div>
+            <div class="bar green" style="height: 380px;">
+                <span>16.53</span>
+                POST-TEST
+            </div>
+        </div>
+        <h2 class="highlight" style="margin-top: 20px;">พัฒนาการเพิ่มขึ้น +38.75% 🚀</h2>
+        <p>(กลุ่มตัวอย่าง: นักเรียนชั้น ม.1 จำนวน 70 คน)</p>
+    </div>
+
+    <div class="slide" id="slide9">
+        <h1>THE VERDICT (STUDENT VOICE)</h1>
+        <div class="video-wrapper">
+             <video controls>
+                <source src="verdict.mp4" type="video/mp4">
+                Browser ไม่รองรับวิดีโอ (โปรดตรวจสอบชื่อไฟล์ verdict.mp4)
+            </video>
+        </div>
+        <p style="margin-top: 20px;">"ความพึงพอใจระดับ <strong>มากที่สุด</strong>"</p>
+    </div>
+
+    <div class="slide" id="slide10">
+        <h1>KEY SUCCESS FACTORS</h1>
+        <div class="split-layout">
+            <div class="card split-item">
+                <h3>🎮 GAMIFICATION</h3>
+                <p>เปลี่ยนการเรียนให้เป็นเรื่องสนุก</p>
+            </div>
+            <div class="card split-item">
+                <h3>🌐 HYBRID ACCESS</h3>
+                <p>เข้าถึงง่าย ทั้งออนไซต์และออนไลน์</p>
+            </div>
+            <div class="card split-item">
+                <h3>🤖 AI-DRIVEN</h3>
+                <p>ใช้เทคโนโลยีช่วยครูผลิตสื่อ</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide11">
+        <h1>THANK YOU</h1>
+        <p>Mystery Inc. Case Files: The Portable AR Edition</p>
+        <div style="font-size: 8rem;">🕵️‍♂️</div>
+        <p><strong>นางสาวศรุตา จันทเกตุ</strong></p>
+        <p>โรงเรียนเขาฉกรรจ์วิทยาคม</p>
+        <div style="margin-top: 20px; border: 2px dashed #fff; padding: 10px; display: inline-block;">
+            <img src="qrcode.png" alt="Scan QR Code" style="max-width: 150px; display: block;" onerror="this.style.display='none'; this.parentNode.innerHTML='[ SCAN QR CODE ]'">
+        </div>
+    </div>
+
+</div>
+
+<div class="controls">
+    <button onclick="prevSlide()">❮ PREV</button>
+    <button onclick="nextSlide()">NEXT ❯</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            
+            // Pause all videos when slide changes
+            const videos = slide.querySelectorAll('video');
+            videos.forEach(v => v.pause());
+
+            if (i === index) {
+                slide.classList.add('active');
+                // Play video if it has autoplay attribute
+                const activeVideo = slide.querySelector('video[autoplay]');
+                if(activeVideo) {
+                    activeVideo.currentTime = 0;
+                    activeVideo.play().catch(e => console.log("Autoplay blocked:", e));
+                }
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+        }
+    });
+</script>
+
+</body>
+</html>
